@@ -1,0 +1,115 @@
+@charset 'UTF-8';
+
+body {
+    margin: 0; padding: 0;
+    font-family: 'Apple SD Gothic Neo', AppleGothic, 'Lucida Sans Unicode', 'Lucida Grande', Tahoma, Arial, sans-serif;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
+}
+img {
+    max-width: 100%; height: auto;
+}
+.just-foldablecard {
+    height: 200px;
+    position: relative;
+    -webkit-perspective: 800px;
+    -moz-perspective: 800px;
+    -o-perspective: 800px;
+    -ms-perspective: 800px;
+    perspective: 800px;
+}
+.just-foldablecard .foldablecard {
+    position: absolute; z-index: 2; left: 6.25%; /* 20/320 */
+    width: 87.5%; /* 280/320 */ height: 100%;
+    cursor: pointer;
+    -webkit-transform-origin: top; -webkit-transform-style: preserve-3d; -webkit-user-select: none;
+    -moz-transform-origin: top; -moz-transform-style: preserve-3d; -moz-user-select: none;
+    -o-transform-origin: top; -o-transform-style: preserve-3d; -o-user-select: none;
+    -ms-transform-origin: top; -ms-transform-style: preserve-3d; -ms-user-select: none;
+    transform-origin: top; transform-style: preserve-3d; user-select: none;
+}
+.just-foldablecard.is-opened .foldablecard {
+    cursor: default;
+    box-sizing: border-box;
+}
+.just-foldablecard .foldablecard > div {
+    position: absolute; left: 0; top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.just-foldablecard .foldablecard .cover {
+    background: #fff;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 1px 2px, inset rgba(0, 0, 0, 0.1) 0 1px 1px;
+    overflow: hidden;
+}
+.just-foldablecard .foldablecard .inside {
+    overflow: hidden;
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    transform: rotateX(180deg);
+    border: 1px solid #ddd; border-bottom: none;
+    background: #fff;
+}
+.just-foldablecard .inside-copy {
+    position: absolute; left: 6.25%; /* 20/320 */ top: 0; z-index: 1;
+    width: 87.5%; /* 280/320 */ height: 200px;
+    overflow: hidden;
+}
+.just-foldablecard.is-opened .inside-copy {
+    height: auto !important;
+    overflow: auto;
+    border: 1px solid #ddd; border-top: none;
+}
+.just-foldablecard .inside-copy-content {
+    margin-top: -200px;
+}
+.just-foldablecard .btn-close-card {
+    position: absolute; left: 50%; top: 0;
+    margin-left: -17px; padding: 0;
+    width: 34px; height: 34px;
+    background: rgba(0, 0, 0, 0.3);
+    border: none; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;
+    font-size: 1.3em; color: transparent;
+    overflow: hidden;
+    cursor: pointer;
+}
+.just-foldablecard .btn-close-card:before {
+    content: 'v';
+    display: block;
+    position: absolute; left: 50%; top: 0;
+    margin-left: -5px;
+    height: 34px;
+    color: #fff; line-height: 34px;
+    -webkit-transform: scaleX(2);
+    -moz-transform: scaleX(2);
+    -o-transform: scaleX(2);
+    -ms-transform: scaleX(2);
+    transform: scaleX(2);
+}
+.just-foldablecard .inside-content,
+.just-foldablecard .inside-copy-content {
+    padding: 15px;
+}
+.just-foldablecard.folding .foldablecard .inside:after {
+    content: '';
+    display: block;
+    position: absolute; left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.2))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.2) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#33000000',GradientType=0 ); /* IE6-9 */
+}
